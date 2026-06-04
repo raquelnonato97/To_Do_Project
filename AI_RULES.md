@@ -29,7 +29,7 @@ Ao receber uma tarefa:
 7. Ao finalizar mudanças de arquitetura, atualize o `README.md` do contexto.
 
 Regra prática:
-- Não releia `docs/frontend.md` ou `docs/backend.md` por completo sem necessidade.
+- Não releia `frontend.md` ou `docs/backend.md` por completo sem necessidade.
 - Leia apenas a seção relevante para a tarefa atual.
 
 ---
