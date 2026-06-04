@@ -9,16 +9,20 @@ import {
   FileText,
   Smartphone,
   Palette,
-  ClipboardList
+  ClipboardList,
+  LogOut,
+  User as UserIcon
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { TodoForm } from "@/contexts/todo/components/TodoForm";
 import { TodoList } from "@/contexts/todo/components/TodoList";
+import { useAuth } from "@/contexts/auth/AuthContext";
 import { showSuccess } from "@/utils/toast";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState<"tasks" | "features" | "docs">("tasks");
+  const { user, signOut } = useAuth();
 
   const handleNotify = () => {
     showSuccess("Pronto para receber as novas instruções de arquitetura!");
@@ -57,12 +61,24 @@ const Index = () => {
               Documentos
             </button>
           </nav>
-          <div className="flex items-center gap-3">
+          
+          <div className="flex items-center gap-4">
+            {user && (
+              <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200">
+                <UserIcon className="h-4 w-4 text-slate-500" />
+                <span className="text-xs font-semibold text-slate-700 max-w-[150px] truncate">
+                  {user.email}
+                </span>
+              </div>
+            )}
             <Button 
-              onClick={handleNotify}
-              className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-5 shadow-lg shadow-indigo-100 transition-all hover:shadow-indigo-200 text-xs sm:text-sm"
+              onClick={signOut}
+              variant="ghost"
+              size="sm"
+              className="rounded-full text-slate-500 hover:text-red-600 hover:bg-red-50 flex items-center gap-1.5"
             >
-              Iniciar Arquitetura
+              <LogOut className="h-4 w-4" />
+              <span className="hidden sm:inline">Sair</span>
             </Button>
           </div>
         </div>
