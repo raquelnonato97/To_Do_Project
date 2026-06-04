@@ -7,7 +7,7 @@
 
 ## Projeto
 
-- React + TypeScript + Vite + Supabase. Stack completa em `docs/frontend.md`.
+- React + TypeScript + Vite + Supabase. Stack completa em `frontend.md`.
 - Página principal: `src/pages/Index.tsx` — **sempre atualizar** ao adicionar componentes visíveis.
 - Rotas: todas em `src/App.tsx`, nunca em outros arquivos.
 - Código-fonte: somente dentro de `src/`.
