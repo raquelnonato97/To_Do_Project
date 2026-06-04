@@ -58,7 +58,7 @@ Se a tarefa envolver...
   1. `AI_RULES.md`
   2. `src/contexts/<nome>/README.md`
   3. Seção relevante deste `frontend.md`
-  4. Seção relevante de `docs/backend.md`
+  4. Seção relevante de `backend.md`
 
 ---
 
