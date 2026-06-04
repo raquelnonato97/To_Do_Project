@@ -23,8 +23,8 @@ Ao receber uma tarefa:
 3. Se o contexto ainda não existir, crie a estrutura inicial completa do contexto, incluindo `README.md`.
 4. Leia o `README.md` do contexto relevante antes de editar código.
 5. Consulte apenas a seção necessária dos guias abaixo, usando o **Índice Operacional** no topo de cada arquivo:
-   - `docs/frontend.md` → tarefas de UI, páginas, hooks, formulários, rotas, auth e experiência do usuário
-   - `docs/backend.md` → tarefas de schema, tabelas, RLS, RPC, triggers, views e migrations
+   - `frontend.md` → tarefas de UI, páginas, hooks, formulários, rotas, auth e experiência do usuário
+   - `backend.md` → tarefas de schema, tabelas, RLS, RPC, triggers, views e migrations
 6. Se a tarefa for full-stack, consulte os dois guias.
 7. Ao finalizar mudanças de arquitetura, atualize o `README.md` do contexto.
 
