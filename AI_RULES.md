@@ -1,7 +1,7 @@
 # AI Rules
 
 > Lido automaticamente pelo Dyad a cada prompt. Mantenha este arquivo **curto e direto** — regras longas diluem as importantes.
-> Detalhes de arquitetura estão em `docs/frontend.md`, `docs/backend.md` e nos `README.md` de cada contexto em `src/contexts/`.
+> Detalhes de arquitetura estão em `frontend.md`, `backend.md` e nos `README.md` de cada contexto em `src/contexts/`.
 
 ---
 
