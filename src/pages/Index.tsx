@@ -2,24 +2,23 @@
 
 import React, { useState } from "react";
 import { 
-  LayoutDashboard, 
-  Layers, 
-  Cpu, 
   Sparkles, 
   ArrowRight, 
   CheckCircle2, 
   Code2, 
   FileText,
   Smartphone,
-  Palette
+  Palette,
+  ClipboardList
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { TodoForm } from "@/contexts/todo/components/TodoForm";
+import { TodoList } from "@/contexts/todo/components/TodoList";
 import { showSuccess } from "@/utils/toast";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState<"overview" | "features" | "docs">("overview");
+  const [activeTab, setActiveTab] = useState<"tasks" | "features" | "docs">("tasks");
 
   const handleNotify = () => {
     showSuccess("Pronto para receber as novas instruções de arquitetura!");
@@ -40,10 +39,10 @@ const Index = () => {
           </div>
           <nav className="hidden md:flex items-center gap-6">
             <button 
-              onClick={() => setActiveTab("overview")}
-              className={`text-sm font-medium transition-colors ${activeTab === "overview" ? "text-indigo-600" : "text-slate-600 hover:text-slate-900"}`}
+              onClick={() => setActiveTab("tasks")}
+              className={`text-sm font-medium transition-colors ${activeTab === "tasks" ? "text-indigo-600" : "text-slate-600 hover:text-slate-900"}`}
             >
-              Visão Geral
+              Minhas Tarefas
             </button>
             <button 
               onClick={() => setActiveTab("features")}
@@ -61,7 +60,7 @@ const Index = () => {
           <div className="flex items-center gap-3">
             <Button 
               onClick={handleNotify}
-              className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-5 shadow-lg shadow-indigo-100 transition-all hover:shadow-indigo-200"
+              className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-5 shadow-lg shadow-indigo-100 transition-all hover:shadow-indigo-200 text-xs sm:text-sm"
             >
               Iniciar Arquitetura
             </Button>
@@ -76,11 +75,11 @@ const Index = () => {
             🚀 Estrutura Pronta & Configurada
           </Badge>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
-            Seu novo projeto web está <span className="text-indigo-600">pronto para evoluir</span>
+            Gerenciador de Tarefas <span className="text-indigo-600">Integrado</span>
           </h1>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            Copiamos com sucesso as regras personalizadas de <code className="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono text-sm">AI_RULES.md</code>, 
-            além das especificações de <code className="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono text-sm">Frontend.md</code> e <code className="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono text-sm">Backend.md</code>.
+            As variáveis de ambiente estão 100% protegidas no arquivo <code className="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono text-sm">.env</code>. 
+            Crie, complete e delete tarefas conectadas em tempo real com seu banco de dados Supabase!
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
@@ -100,46 +99,23 @@ const Index = () => {
         </div>
 
         {/* Tab Content */}
-        {activeTab === "overview" && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <Card className="border-slate-200/80 shadow-sm hover:shadow-md transition-all rounded-2xl overflow-hidden bg-white">
-              <CardHeader className="pb-4">
-                <div className="h-12 w-12 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center mb-2">
-                  <Palette className="h-6 w-6" />
-                </div>
-                <CardTitle className="text-xl font-bold text-slate-900">Design System</CardTitle>
-                <CardDescription className="text-slate-500">Estética moderna e colorida</CardDescription>
-              </CardHeader>
-              <CardContent className="text-slate-600 text-sm leading-relaxed">
-                Seguindo as diretrizes visuais com formas arredondadas, alto contraste, cores vibrantes e layouts totalmente responsivos para dispositivos móveis e desktop.
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200/80 shadow-sm hover:shadow-md transition-all rounded-2xl overflow-hidden bg-white">
-              <CardHeader className="pb-4">
-                <div className="h-12 w-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-2">
-                  <Cpu className="h-6 w-6" />
-                </div>
-                <CardTitle className="text-xl font-bold text-slate-900">Arquitetura Limpa</CardTitle>
-                <CardDescription className="text-slate-500">Pronto para escalabilidade</CardDescription>
-              </CardHeader>
-              <CardContent className="text-slate-600 text-sm leading-relaxed">
-                Estrutura de pastas organizada com <code className="bg-slate-100 px-1 rounded text-emerald-700">src/pages</code> e <code className="bg-slate-100 px-1 rounded text-emerald-700">src/components</code>, facilitando a manutenção e criação de novos fluxos.
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200/80 shadow-sm hover:shadow-md transition-all rounded-2xl overflow-hidden bg-white">
-              <CardHeader className="pb-4">
-                <div className="h-12 w-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center mb-2">
-                  <Layers className="h-6 w-6" />
-                </div>
-                <CardTitle className="text-xl font-bold text-slate-900">Componentes Ricos</CardTitle>
-                <CardDescription className="text-slate-500">Biblioteca Shadcn/ui ativa</CardDescription>
-              </CardHeader>
-              <CardContent className="text-slate-600 text-sm leading-relaxed">
-                Acesso completo a componentes interativos e acessíveis, prontos para serem customizados e integrados com as regras de negócio que você definir.
-              </CardContent>
-            </Card>
+        {activeTab === "tasks" && (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16 items-start">
+            <div className="lg:col-span-1">
+              <TodoForm />
+            </div>
+            <div className="lg:col-span-2 space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3">
+                <h3 className="font-bold text-lg text-slate-900 flex items-center gap-2">
+                  <ClipboardList className="text-indigo-600 h-5 w-5" />
+                  Lista de Atividades
+                </h3>
+                <Badge variant="outline" className="text-xs font-semibold rounded-full border-slate-200 bg-white">
+                  Banco de Dados Ativo
+                </Badge>
+              </div>
+              <TodoList />
+            </div>
           </div>
         )}
 
@@ -201,7 +177,7 @@ const Index = () => {
             <div className="border border-slate-200 bg-white rounded-2xl p-5 flex flex-col justify-between shadow-sm">
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <Layers className="text-amber-600 h-5 w-5" />
+                  <Palette className="text-amber-600 h-5 w-5" />
                   <span className="font-bold text-slate-900">Backend.md</span>
                 </div>
                 <p className="text-slate-600 text-xs mb-4">Especificações de integrações, APIs, banco de dados e lógica de servidor.</p>
