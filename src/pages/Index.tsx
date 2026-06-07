@@ -3,12 +3,10 @@
 import React, { useState } from "react";
 import { 
   Sparkles, 
-  Code2, 
-  FileText,
-  Palette,
   ClipboardList,
   LogOut,
-  User as UserIcon
+  User as UserIcon,
+  Github
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +15,7 @@ import { TodoList } from "@/contexts/todo/components/TodoList";
 import { useAuth } from "@/contexts/auth/AuthContext";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState<"tasks" | "features" | "docs">("tasks");
+  const [activeTab, setActiveTab] = useState<"tasks" | "docs">("tasks");
   const { user, signOut } = useAuth();
 
   return (
@@ -39,12 +37,6 @@ const Index = () => {
               className={`text-sm font-medium transition-colors ${activeTab === "tasks" ? "text-indigo-600" : "text-slate-600 hover:text-slate-900"}`}
             >
               Minhas Tarefas
-            </button>
-            <button 
-              onClick={() => setActiveTab("features")}
-              className={`text-sm font-medium transition-colors ${activeTab === "features" ? "text-indigo-600" : "text-slate-600 hover:text-slate-900"}`}
-            >
-              Diretrizes
             </button>
             <button 
               onClick={() => setActiveTab("docs")}
@@ -108,70 +100,25 @@ const Index = () => {
           </div>
         )}
 
-        {activeTab === "features" && (
-          <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-16">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <ClipboardList className="text-indigo-600 h-6 w-6" /> Diretrizes de Desenvolvimento Ativas
-            </h2>
-            <div className="space-y-6">
-              <div className="flex gap-4 items-start">
-                <div className="h-8 w-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-sm">1</div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Design Mobile-First</h3>
-                  <p className="text-slate-600 text-sm">Todas as interfaces são projetadas primeiro para telas menores e depois aprimoradas para telas grandes.</p>
-                </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <div className="h-8 w-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-sm">2</div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Formas Arredondadas & Cores Vivas</h3>
-                  <p className="text-slate-600 text-sm">Preferência por cantos arredondados e paletas de cores confiantes, evitando fundos com gradientes complexos ou excesso de tons escuros neutros.</p>
-                </div>
-              </div>
-              <div className="flex gap-4 items-start">
-                <div className="h-8 w-8 rounded-full bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0 font-bold text-sm">3</div>
-                <div>
-                  <h3 className="font-semibold text-slate-900 mb-1">Componentes Focados</h3>
-                  <p className="text-slate-600 text-sm">Criação de arquivos pequenos e focados (menos de 100 linhas sempre que possível) para manter o código limpo e legível.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {activeTab === "docs" && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16">
-            <div className="border border-slate-200 bg-white rounded-2xl p-5 flex flex-col justify-between shadow-sm">
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <Code2 className="text-indigo-600 h-5 w-5" />
-                  <span className="font-bold text-slate-900">AI_RULES.md</span>
-                </div>
-                <p className="text-slate-600 text-xs mb-4">Contém as regras de desenvolvimento, padrões de código e diretrizes estéticas do projeto.</p>
-              </div>
-              <Badge className="bg-indigo-50 text-indigo-700 hover:bg-indigo-50 border-indigo-100 self-start rounded-full">Atualizado</Badge>
+          <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-3xl p-8 shadow-sm text-center mb-16">
+            <div className="h-14 w-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-800 mx-auto mb-5 shadow-sm">
+              <Github className="h-7 w-7" />
             </div>
-
-            <div className="border border-slate-200 bg-white rounded-2xl p-5 flex flex-col justify-between shadow-sm">
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <FileText className="text-emerald-600 h-5 w-5" />
-                  <span className="font-bold text-slate-900">Frontend.md</span>
-                </div>
-                <p className="text-slate-600 text-xs mb-4">Especificações de arquitetura do cliente, componentes e fluxos de tela.</p>
-              </div>
-              <Badge className="bg-emerald-50 text-emerald-700 hover:bg-emerald-50 border-emerald-100 self-start rounded-full">Adicionado</Badge>
-            </div>
-
-            <div className="border border-slate-200 bg-white rounded-2xl p-5 flex flex-col justify-between shadow-sm">
-              <div>
-                <div className="flex items-center gap-2 mb-3">
-                  <Palette className="text-amber-600 h-5 w-5" />
-                  <span className="font-bold text-slate-900">Backend.md</span>
-                </div>
-                <p className="text-slate-600 text-xs mb-4">Especificações de integrações, APIs, banco de dados e lógica de servidor.</p>
-              </div>
-              <Badge className="bg-amber-50 text-amber-700 hover:bg-amber-50 border-amber-100 self-start rounded-full">Adicionado</Badge>
+            <h2 className="text-2xl font-bold text-slate-900 tracking-tight">Repositório do Projeto</h2>
+            <p className="text-slate-500 text-sm mt-2 max-w-md mx-auto">
+              Acesse o código-fonte, acompanhe as atualizações e colabore diretamente com o desenvolvimento através do GitHub oficial do projeto.
+            </p>
+            <div className="mt-6 flex justify-center">
+              <a 
+                href="https://github.com/raquelnonato97/To_Do_Project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-2xl bg-slate-900 hover:bg-slate-850 text-white font-medium shadow-md transition-all active:scale-98"
+              >
+                <Github className="h-5 w-5" />
+                Ver no GitHub
+              </a>
             </div>
           </div>
         )}
