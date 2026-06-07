@@ -7,7 +7,6 @@ import {
   CheckCircle2, 
   Code2, 
   FileText,
-  Smartphone,
   Palette,
   ClipboardList,
   LogOut,
@@ -25,7 +24,7 @@ const Index = () => {
   const { user, signOut } = useAuth();
 
   const handleNotify = () => {
-    showSuccess("Pronto para receber as novas instruções de arquitetura!");
+    showSuccess("A interface foi simplificada com sucesso!");
   };
 
   return (
@@ -86,17 +85,13 @@ const Index = () => {
 
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-12">
           <Badge className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border-indigo-200 px-3 py-1 rounded-full text-xs font-semibold mb-4">
-            🚀 Estrutura Pronta & Configurada
+            🚀 Gerenciador
           </Badge>
           <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
             Gerenciador de Tarefas <span className="text-indigo-600">Integrado</span>
           </h1>
-          <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            As variáveis de ambiente estão 100% protegidas no arquivo <code className="bg-slate-100 px-1.5 py-0.5 rounded text-indigo-600 font-mono text-sm">.env</code>. 
-            Crie, complete e delete tarefas conectadas em tempo real com seu banco de dados Supabase!
-          </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button 
               onClick={() => setActiveTab("features")}
@@ -107,9 +102,9 @@ const Index = () => {
             </Button>
             <Button 
               onClick={handleNotify}
-              className="rounded-full bg-emerald-600 hover:bg-emerald-700 text-white px-6 shadow-lg shadow-emerald-100"
+              className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 shadow-lg shadow-indigo-100"
             >
-              Enviar Sinal de Pronto <ArrowRight className="ml-2 h-4 w-4" />
+              Confirmar Alterações <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </div>
         </div>
@@ -202,25 +197,6 @@ const Index = () => {
             </div>
           </div>
         )}
-
-        {/* Call to Action / Next Steps */}
-        <div className="bg-indigo-900 text-white rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-xl shadow-indigo-100">
-          <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-indigo-800 rounded-full opacity-50 blur-xl"></div>
-          <div className="absolute bottom-0 left-0 -mb-4 -ml-4 w-32 h-32 bg-indigo-700 rounded-full opacity-30 blur-2xl"></div>
-          
-          <h2 className="text-2xl sm:text-3xl font-bold mb-4 relative z-10">Pronto para o próximo passo?</h2>
-          <p className="text-indigo-200 max-w-xl mx-auto mb-8 text-sm sm:text-base relative z-10">
-            Estou aguardando suas orientações sobre a arquitetura deste app. Diga-me quais telas, fluxos ou integrações devemos construir a seguir!
-          </p>
-          <div className="flex justify-center gap-4 relative z-10">
-            <div className="flex items-center gap-2 bg-indigo-800/80 border border-indigo-700 px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
-              <Smartphone className="h-4 w-4 text-indigo-300" /> Mobile-First Ativo
-            </div>
-            <div className="flex items-center gap-2 bg-indigo-800/80 border border-indigo-700 px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
-              <Code2 className="h-4 w-4 text-indigo-300" /> TypeScript & React
-            </div>
-          </div>
-        </div>
       </main>
 
       {/* Footer */}
