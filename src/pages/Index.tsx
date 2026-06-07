@@ -3,8 +3,6 @@
 import React, { useState } from "react";
 import { 
   Sparkles, 
-  ArrowRight, 
-  CheckCircle2, 
   Code2, 
   FileText,
   Palette,
@@ -17,15 +15,10 @@ import { Badge } from "@/components/ui/badge";
 import { TodoForm } from "@/contexts/todo/components/TodoForm";
 import { TodoList } from "@/contexts/todo/components/TodoList";
 import { useAuth } from "@/contexts/auth/AuthContext";
-import { showSuccess } from "@/utils/toast";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState<"tasks" | "features" | "docs">("tasks");
   const { user, signOut } = useAuth();
-
-  const handleNotify = () => {
-    showSuccess("A interface foi simplificada com sucesso!");
-  };
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-indigo-500 selection:text-white">
@@ -86,27 +79,12 @@ const Index = () => {
       {/* Hero Section */}
       <main className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <Badge className="bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border-indigo-200 px-3 py-1 rounded-full text-xs font-semibold mb-4">
-            🚀 Gerenciador
-          </Badge>
-          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight">
+          <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight">
             Gerenciador de Tarefas <span className="text-indigo-600">Integrado</span>
           </h1>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              onClick={() => setActiveTab("features")}
-              variant="outline" 
-              className="rounded-full border-slate-200 hover:bg-slate-100 text-slate-700 px-6"
-            >
-              Ver Diretrizes
-            </Button>
-            <Button 
-              onClick={handleNotify}
-              className="rounded-full bg-indigo-600 hover:bg-indigo-700 text-white px-6 shadow-lg shadow-indigo-100"
-            >
-              Confirmar Alterações <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
+          <p className="text-slate-500 mt-3 text-base">
+            Organize e gerencie seus afazeres diários de forma rápida e intuitiva.
+          </p>
         </div>
 
         {/* Tab Content */}
@@ -133,7 +111,7 @@ const Index = () => {
         {activeTab === "features" && (
           <div className="max-w-4xl mx-auto bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm mb-16">
             <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-              <CheckCircle2 className="text-indigo-600 h-6 w-6" /> Diretrizes de Desenvolvimento Ativas
+              <ClipboardList className="text-indigo-600 h-6 w-6" /> Diretrizes de Desenvolvimento Ativas
             </h2>
             <div className="space-y-6">
               <div className="flex gap-4 items-start">
