@@ -3,6 +3,8 @@ import { Todo, CreateTodoInput, UpdateTodoInput } from "../todo.types";
 
 /**
  * Busca todas as tarefas cadastradas na tabela tarefas_to_do.
+ * Graças ao Row Level Security (RLS), o Supabase filtra e retorna automaticamente
+ * apenas as tarefas pertencentes ao usuário logado na sessão ativa.
  */
 export async function getTodos(): Promise<Todo[]> {
   const { data, error } = await supabase
@@ -18,15 +20,21 @@ export async function getTodos(): Promise<Todo[]> {
 }
 
 /**
- * Cria uma nova tarefa na tabela tarefas_to_do.
+ * Cria uma nova tarefa na tabela tarefas_to_do, garantindo a associação com o user_id logado.
  */
 export async function createTodo(input: CreateTodoInput): Promise<Todo> {
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) {
+    throw new Error("Usuário não autenticado no portal.");
+  }
+
   const { data, error } = await supabase
     .from("tarefas_to_do")
     .insert([{
       titulo: input.titulo,
       detalhes: input.detalhes,
       status: input.status,
+      user_id: user.id,
       data_criacao: new Date().toISOString()
     }])
     .select()

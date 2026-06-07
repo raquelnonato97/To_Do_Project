@@ -1,5 +1,6 @@
 export interface Todo {
   id: string;
+  user_id: string;
   titulo: string;
   detalhes?: string;
   data_criacao: string;
@@ -13,6 +14,7 @@ export interface CreateTodoInput {
   titulo: string;
   detalhes?: string;
   status: "pendente" | "concluida";
+  user_id?: string;
 }
 
 export interface UpdateTodoInput {
